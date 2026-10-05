@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useVelocity } from 'framer-motion';
 import { ParticleHero } from '@/components/motion/ParticleHero';
 import { Scramble } from '@/components/lab/motion';
-import { introWillShow } from '@/components/intro/IntroGate';
 import { EASE } from '@/lib/motion/variants';
 import { heroScene } from '@/lib/content/scenes';
 
@@ -18,7 +17,7 @@ export function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const subRef = useRef<HTMLDivElement | null>(null);
   const canvasHostRef = useRef<HTMLDivElement | null>(null);
-  const BASE = introWillShow() ? 1.75 : 0.25;
+  const BASE = 0.25;
   const WAVE = heroScene.mark.length * 0.11 + 0.5;
 
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });

@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { LabNav } from '@/components/lab/LabNav';
 import { LabFooter } from '@/components/lab/LabFooter';
 import { CursorProvider } from '@/components/cursor/Cursor';
-import { IntroGate } from '@/components/intro/IntroGate';
 import { useLenis, scrollToTop, scrollToId } from '@/lib/motion/useLenis';
 import { EASE } from '@/lib/motion/variants';
 import { site } from '@/lib/content/site';
@@ -31,8 +30,6 @@ export default function App() {
       >
         Skip to content
       </a>
-
-      <IntroGate />
 
       <LabNav />
       <RoutedContent />
