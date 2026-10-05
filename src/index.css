@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --paper: #faf7f2;
+    --ink: #121820;
+    --signal: #14999c;
+    --deep: #15191f;
+    --line: rgba(18, 24, 32, 0.12);
+    --line-soft: rgba(18, 24, 32, 0.06);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-warmivory text-ink font-sans;
+    font-size: 1rem;
+    overflow-x: hidden;
+  }
+
+  /* Lenis */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  ::selection {
+    background: rgba(255, 190, 145, 0.55);
+    color: #111111;
+  }
+
+  /* Visible focus — accessibility is not optional */
+  :focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Reduced motion: never prevent comprehension */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* ---------- layout ---------- */
+  .shell {
+    @apply mx-auto w-full max-w-shell px-6 md:px-10 lg:px-[72px];
+  }
+
+  /* ---------- type ---------- */
+  .t-eyebrow {
+    @apply font-mono text-meta uppercase text-muted;
+  }
+  .t-meta {
+    @apply font-mono text-meta uppercase;
+  }
+  .t-hero {
+    @apply font-display text-hero font-bold;
+  }
+  .t-section {
+    @apply font-display text-section font-bold;
+  }
+  .t-sub {
+    @apply font-display text-sub font-medium;
+  }
+  .t-lede {
+    @apply text-lede text-ink/80;
+  }
+
+  /* ---------- rules ---------- */
+  .rule {
+    @apply h-px w-full bg-[var(--line)];
+  }
+  .rule-soft {
+    @apply h-px w-full bg-[var(--line-soft)];
+  }
+
+  /* ---------- status ---------- */
+  .status {
+    @apply inline-flex items-center gap-2 font-mono text-meta uppercase whitespace-nowrap;
+  }
+  .status-dot {
+    @apply h-[6px] w-[6px] shrink-0 rounded-full bg-charcoal;
+  }
+  .status-dot--idle {
+    @apply bg-hush;
+  }
+
+  /* ---------- buttons (rectangular, never pills) ---------- */
+  .btn {
+    @apply inline-flex items-center gap-3 bg-charcoal px-6 py-4 font-mono text-meta uppercase text-warmivory transition-colors duration-300 ease-calm hover:bg-peach hover:text-charcoal;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-3 border border-charcoal/30 px-6 py-4 font-mono text-meta uppercase text-charcoal transition-colors duration-300 ease-calm hover:border-charcoal hover:bg-charcoal hover:text-warmivory;
+  }
+  .btn-dark {
+    @apply inline-flex items-center gap-3 bg-peach px-6 py-4 font-mono text-meta uppercase text-charcoal transition-colors duration-300 ease-calm hover:bg-warmivory;
+  }
+
+  /* ---------- links ---------- */
+  .link-underline {
+    @apply relative inline-block;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-500 ease-calm;
+  }
+  .link-underline:hover::after {
+    @apply origin-left scale-x-100;
+  }
+
+  /* ---------- index row (the ledger) ---------- */
+  .ledger-row {
+    @apply grid items-baseline gap-x-6 gap-y-3 border-b border-[var(--line)] py-7 transition-colors duration-300 ease-calm;
+    grid-template-columns: 3.5rem 1fr;
+  }
+  @media (min-width: 768px) {
+    .ledger-row {
+      grid-template-columns: 5rem 1fr 1.25fr 9rem;
+      @apply gap-x-8 py-8;
+    }
+  }
+  .ledger-row:hover {
+    background: rgba(255, 190, 145, 0.25);
+  }
+}
+
+@layer utilities {
+  /* Extremely low-opacity grain. Keeps the surface from reading as flat screen. */
+  .grain::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Thin technical grid — barely there. */
+  .tech-grid {
+    background-image: linear-gradient(to right, rgba(18, 24, 32, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(18, 24, 32, 0.035) 1px, transparent 1px);
+    background-size: 88px 88px;
+  }
+
+  /* Word-mask reveal: each line clips its own content upward. */
+  .line-mask {
+    display: block;
+    overflow: hidden;
+  }
+  .line-mask > span {
+    display: block;
+    will-change: transform;
+  }
+
+  /* ── Lab identity: fine drafting grid on ivory ── */
+  .lab-grid {
+    background-image: linear-gradient(to right, rgba(16, 19, 26, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(16, 19, 26, 0.05) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+  /* ── Lab identity: fine drafting grid on navy ── */
+  .lab-grid-dark {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  /* ── Hollow display type: outlined ghost numerals ── */
+  .text-outline {
+    -webkit-text-stroke: 1.5px rgba(237, 234, 224, 0.22);
+    color: transparent;
+  }
+  .text-outline-faint {
+    -webkit-text-stroke: 1px rgba(237, 234, 224, 0.13);
+    color: transparent;
+  }
+  /* ── Hollow display type on light fields ── */
+  .text-outline-dark {
+    -webkit-text-stroke: 1.5px rgba(12, 12, 11, 0.22);
+    color: transparent;
+  }
+
+  /* ── Marquee band ── */
+  @keyframes lab-marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-marquee {
+    animation: lab-marquee 26s linear infinite;
+  }
+
+  .no-cursor {
+    cursor: none;
+  }
+}
