@@ -64,15 +64,18 @@ export function RevealItem({
   className = '',
   as = 'div',
   y = 18,
+  id,
 }: {
   children: ReactNode;
   className?: string;
+  id?: string;
   as?: 'div' | 'li' | 'article';
   y?: number;
 }) {
   const MotionTag = motion[as];
   return (
     <MotionTag
+      id={id}
       className={className}
       variants={{
         hidden: { opacity: 0, y },

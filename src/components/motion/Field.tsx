@@ -70,7 +70,7 @@ export function Field({
           const b = nodes[j];
           const d = Math.hypot(a.x - b.x, a.y - b.y);
           if (d < linkDist) {
-            ctx.strokeStyle = `rgba(18,24,32,${(1 - d / linkDist) * 0.15})`;
+            ctx.strokeStyle = `rgba(11,31,60,${(1 - d / linkDist) * 0.15})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -83,7 +83,7 @@ export function Field({
       nodes.forEach((n, i) => {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = i % accentEvery === 0 ? 'rgba(17,17,17,0.55)' : 'rgba(17,17,17,0.22)';
+        ctx.fillStyle = i % accentEvery === 0 ? 'rgba(11,31,60,0.55)' : 'rgba(11,31,60,0.22)';
         ctx.fill();
       });
 

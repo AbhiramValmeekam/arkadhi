@@ -115,20 +115,20 @@ export function CursorProvider({ children }: { children: ReactNode }) {
         >
           <div
             ref={dot}
-            className="absolute left-0 top-0 rounded-full bg-[#EDEAE0] transition-[width,height] duration-300 ease-calm"
+            className="absolute left-0 top-0 rounded-full bg-[#FFFFFF] transition-[width,height] duration-300 ease-calm"
             style={{ width: g.d, height: g.d }}
           />
           <div
             ref={ring}
-            className="absolute left-0 top-0 flex items-center justify-center rounded-full border border-[#EDEAE0]/70 transition-[width,height,background-color,border-color] duration-300 ease-calm"
+            className="absolute left-0 top-0 flex items-center justify-center rounded-full border border-[#FFFFFF]/70 transition-[width,height,background-color,border-color] duration-300 ease-calm"
             style={{
               width: g.r,
               height: g.r,
-              backgroundColor: state === 'explore' ? 'rgba(237,234,224,0.12)' : 'transparent',
+              backgroundColor: state === 'explore' ? 'rgba(255,255,255,0.12)' : 'transparent',
             }}
           >
             {state === 'explore' && label && (
-              <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-[#EDEAE0]">{label}</span>
+              <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-[#FFFFFF]">{label}</span>
             )}
           </div>
         </div>

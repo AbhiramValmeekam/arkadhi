@@ -53,6 +53,26 @@ export function scrollToId(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
   const lenis = (window as unknown as { __lenis?: Lenis }).__lenis;
-  if (lenis) lenis.scrollTo(el, { offset: -96 });
+  if (lenis) {
+    // Content may have just mounted (lazy routes): refresh Lenis's cached
+    // scroll limit so the target is not clamped to the old page height.
+    lenis.resize();
+    lenis.scrollTo(el, { offset: -96 });
+  }
   else el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/**
+ * Click handler for in-page anchor links to the homepage. When already on the
+ * homepage, scrolls directly (a same-hash navigation would otherwise do nothing).
+ */
+export function anchorClick(pathname: string, hash: string, after?: () => void) {
+  return (e: { preventDefault: () => void }) => {
+    after?.();
+    if (pathname === '/') {
+      e.preventDefault();
+      window.history.replaceState(null, '', `/#${hash}`);
+      scrollToId(hash);
+    }
+  };
 }

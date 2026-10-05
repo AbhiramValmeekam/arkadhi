@@ -61,7 +61,7 @@ export function Drift({
   );
 }
 
-const PALETTE = ['#14999c', '#1b6f7a', '#e8b34b', '#d96c4f', '#4f7dd9'] as const;
+const PALETTE = ['#14999C', '#FC7A5C', '#0B1F3C', '#8F949B'] as const;
 
 export { PALETTE };
 
@@ -105,7 +105,7 @@ export function DeckCard({
         <motion.article
           style={{ rotateX, scale, y, opacity, transformStyle: 'preserve-3d' }}
           transition={{ ease: EASE }}
-          className="overflow-hidden rounded-[28px] border border-ink/10 bg-paper shadow-[0_24px_80px_-32px_rgba(18,24,32,0.35)]"
+          className="overflow-hidden rounded-[28px] border border-ink/10 bg-paper shadow-[0_24px_80px_-32px_rgba(11,31,60,0.35)]"
         >
           <div className="grid md:grid-cols-[1fr_240px]">
             <div className="p-8 md:p-12">

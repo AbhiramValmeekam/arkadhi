@@ -16,7 +16,7 @@ export function Logo({
   tone?: 'ink' | 'paper';
   showWord?: boolean;
 }) {
-  const stroke = tone === 'paper' ? '#FAF7F2' : '#121820';
+  const stroke = tone === 'paper' ? '#FFFFFF' : '#0B1F3C';
   return (
     <span className={`inline-flex items-center gap-3 ${className}`} style={{ color: stroke }}>
       <ArkMark className="h-[22px] w-[22px] shrink-0" />

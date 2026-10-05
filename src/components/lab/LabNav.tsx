@@ -4,13 +4,9 @@ import { motion } from 'framer-motion';
 import { Logo } from '@/components/navigation/Logo';
 import { MobileNav } from '@/components/navigation/MobileNav';
 
-const ITEMS = [
-  { label: 'Research', to: '/research' },
-  { label: 'Solutions', to: '/solutions' },
-  { label: 'Products', to: '/products' },
-  { label: 'Community', to: '/community' },
-  { label: 'About', to: '/lab' },
-];
+import { nav } from '@/lib/content/pack';
+
+const ITEMS = nav;
 
 /**
  * LabNav — difference-blend navigation. Bone type inverts itself against
@@ -52,7 +48,7 @@ export function LabNav() {
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         className="fixed inset-x-0 top-0 z-[90] mix-blend-difference"
       >
-        <div className="shell flex items-center justify-between py-4 text-[#EDEAE0] md:py-5">
+        <div className="shell flex items-center justify-between py-4 text-[#FFFFFF] md:py-5">
           <Link to="/" aria-label="Arkadhi Labs home" className="flex items-center gap-3">
             <Logo showWord={false} tone="paper" />
             <span className="font-mono text-[11px] uppercase tracking-[0.28em]">
@@ -64,21 +60,16 @@ export function LabNav() {
               <Link
                 key={item.label}
                 to={item.to}
-                className="group relative font-mono text-[11px] uppercase tracking-[0.2em] opacity-80 transition-opacity hover:opacity-100"
+                aria-current={location.pathname === item.to ? 'page' : undefined}
+                className="group relative font-mono text-[11px] uppercase tracking-[0.2em] opacity-90 transition-opacity hover:opacity-100"
               >
                 {item.label}
                 <span
                   aria-hidden="true"
-                  className="absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-400 group-hover:origin-left group-hover:scale-x-100"
+                  className="absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-300 group-hover:origin-left group-hover:scale-x-100"
                 />
               </Link>
             ))}
-            <Link
-              to="/work-with-us"
-              className="font-mono text-[11px] uppercase tracking-[0.2em] opacity-80 transition-opacity hover:opacity-100"
-            >
-              Contact <span aria-hidden="true">↗</span>
-            </Link>
           </nav>
           <button
             onClick={() => setOpen((v) => !v)}

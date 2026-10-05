@@ -7,6 +7,9 @@ dist/
 # research probes, screenshots logs (local working notes, not source)
 _research/
 
+# superseded local code, explicitly trashed
+_to_delete/
+
 # typescript build info
 *.tsbuildinfo
 

@@ -54,7 +54,7 @@ export function ParticleHero({
   text,
   accent,
   baseDelay = 0.3,
-  particleColor = '#121820',
+  particleColor = '#0B1F3C',
   sectionRef,
   subRef,
   canvasHostRef,

@@ -22,7 +22,7 @@ export const site = {
   echoRegentUrl: 'https://echoregent-yudi-pub.web.app/',
 
   // Live site footer line. Kept verbatim.
-  location: 'Distributed Research Network',
+  location: 'India · Remote research network',
 
   // Label pairs shown in the hero metadata column.
   facts: [
@@ -34,51 +34,3 @@ export const site = {
 
   year: '2026',
 } as const;
-
-/** Primary navigation — minimal research-lab index. */
-export const navigation = [
-  { label: 'Research', to: '/research' },
-  { label: 'Solutions', to: '/solutions' },
-  {
-    label: 'Products',
-    to: '/products',
-    children: [{ label: 'EchoRegent', to: 'https://echoregent-yudi-pub.web.app/' }],
-  },
-  {
-    label: 'Community',
-    to: '/community',
-    children: [{ label: 'Compute & Curiosity', to: '/computecuriosity' }],
-  },
-  { label: 'About', to: '/lab' },
-] as const;
-
-/** Footer link columns — mirrors the live site, plus the two new surfaces. */
-export const footerColumns = [
-  {
-    title: 'Research',
-    links: [
-      { label: 'Flagship Paper', to: '/research#arkadhi-cl-2026-01' },
-      { label: 'CMP Architecture', to: '/research#programs' },
-      { label: 'ByteCL Benchmark', to: '/research#draft-bm-002' },
-      { label: 'Solutions', to: '/solutions' },
-    ],
-  },
-  {
-    title: 'Products',
-    links: [
-      { label: 'EchoRegent', to: 'https://echoregent-yudi-pub.web.app/' },
-      { label: 'Prism Runtime', to: '/products#prism-runtime' },
-      { label: 'Trace Atlas', to: '/products#trace-atlas' },
-    ],
-  },
-  {
-    title: 'Lab',
-    links: [
-      { label: 'Operating Model', to: '/lab' },
-      { label: 'Principles', to: '/lab#principles' },
-      { label: 'Careers', to: '/lab/careers' },
-      { label: 'Community', to: '/community' },
-      { label: 'Work With Us', to: '/work-with-us' },
-    ],
-  },
-] as const;

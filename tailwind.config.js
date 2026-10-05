@@ -7,13 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        paper: '#FAF7F2',      // base — warm, not white (legacy pages)
-        ink: '#121820',        // existing brand ink (legacy pages)
-        signal: '#14999C',     // existing brand accent (legacy pages)
-        deep: '#15191F',       // existing footer dark (legacy pages)
-        muted: '#6B7280',
-        hush: '#9AA3AD',
-        'paper-dim': '#F3F0EA',
+        paper: '#FFFFFF',      // Pure White
+        ink: '#0B1F3C',        // Core Navy
+        signal: '#14999C',     // Tech Teal
+        deep: '#0B1F3C',       // Core Navy
+        muted: '#8F949B',       // Cool Gray
+        hush: '#8F949B',        // Cool Gray
+        'paper-dim': '#FFFFFF', // Pure White
         // ── Arkadhi Labs dark-editorial identity (narrative site) ──
         ivory: '#F4F1EA',      // hero field + light breaks
         abyss: '#10131A',      // legacy deep
@@ -28,13 +28,15 @@ export default {
         smoke: '#8A877F',       // legacy muted on coal
         graphite: '#171714',    // legacy raised surfaces
         blaze: '#FF4D00',      // legacy signal
-        stone: '#6F6A5E',       // muted warm gray on paper
-        // ── Arkadhi narrative palette (locked) ──
-        peach: '#FFBE91',       // curiosity / human / climax
-        apricot: '#FFDDB0',     // experimentation / discovery
-        warmivory: '#FFFCE1',   // research / editorial foundation
-        skyblue: '#CFEBFF',     // systems / computation
-        charcoal: '#111111',    // final statement
+        stone: '#8F949B',       // Cool Gray
+        surface: '#F7F7F2',     // optional paper surface for faint notebook sections
+        // ── Arkadhi brand palette: Navy / White / Teal / Gray / Coral ──
+        // (token names kept from the earlier palette so no markup changes)
+        peach: '#FC7A5C',       // Insight Coral — curiosity / climax
+        apricot: '#8F949B',     // Cool Gray — experimentation
+        warmivory: '#FFFFFF',   // Pure White — foundation
+        skyblue: '#14999C',     // Tech Teal — systems / computation
+        charcoal: '#0B1F3C',    // Core Navy — type, buttons, dark fields
       },
       fontFamily: {
         display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
