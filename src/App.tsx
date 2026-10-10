@@ -24,6 +24,8 @@ const EchoRegent = lazyNamed(() => import('@/pages/EchoRegent'), 'EchoRegent');
 const CCHome = lazyNamed(() => import('@/pages/cc/CCHome'), 'CCHome');
 const NotFound = lazyNamed(() => import('@/pages/NotFound'), 'NotFound');
 
+const SITE_URL = 'https://arkadhi.vercel.app';
+
 const META: Record<string, { title: string; description: string }> = {
   '/': seo.home,
   '/research': seo.research,
@@ -36,11 +38,25 @@ const META: Record<string, { title: string; description: string }> = {
 
 function setMeta(pathname: string) {
   const m = META[pathname] ?? seo.home;
+  const canonical = SITE_URL + (pathname === '/' ? '/' : pathname);
   document.title = m.title;
-  document
-    .querySelectorAll<HTMLMetaElement>('meta[name="description"], meta[property="og:description"], meta[name="twitter:description"]')
-    .forEach((el) => el.setAttribute('content', m.description));
-  document.querySelectorAll<HTMLMetaElement>('meta[property="og:title"]').forEach((el) => el.setAttribute('content', m.title));
+  let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+  if (!link) {
+    link = document.createElement('link');
+    link.rel = 'canonical';
+    document.head.appendChild(link);
+  }
+  link.href = canonical;
+  const set = (sel: string, content: string) =>
+    document
+      .querySelectorAll<HTMLMetaElement>(sel)
+      .forEach((el) => el.setAttribute('content', content));
+  set(
+    'meta[name="description"], meta[property="og:description"], meta[name="twitter:description"]',
+    m.description,
+  );
+  set('meta[property="og:title"], meta[name="twitter:title"]', m.title);
+  set('meta[property="og:url"]', canonical);
 }
 
 export default function App() {
