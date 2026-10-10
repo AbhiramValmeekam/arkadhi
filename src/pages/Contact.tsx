@@ -1,12 +1,25 @@
+import { useState } from 'react';
 import { PageHead, Band, PRIMARY } from '@/components/home/parts';
 import { ContactRoom } from '@/components/home/Closing';
-import { closing, echoHome, communityHome, mail, SUBJECTS } from '@/lib/content/pack';
+import { closing, echoHome, communityHome, mail, SUBJECTS, audiences } from '@/lib/content/pack';
+import { site } from '@/lib/content/site';
 
 /**
  * /contact — email actions only. No form: delivery does not exist yet, so a form
  * would be a button that does nothing.
  */
 export function Contact() {
+  const [copied, setCopied] = useState(false);
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(site.contactEmail);
+    } catch {
+      window.location.href = `mailto:${site.contactEmail}`;
+      return;
+    }
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2000);
+  };
   const rows = [
     { key: closing.cta, subject: SUBJECTS.general, note: closing.body },
     { key: echoHome.cta, subject: SUBJECTS.audit, note: echoHome.offer },
@@ -27,6 +40,31 @@ export function Contact() {
             </li>
           ))}
         </ul>
+      </Band>
+      <Band index="02" label="Who should write">
+        <ul className="mt-12 grid gap-px border border-charcoal/30 bg-charcoal/30 md:grid-cols-3">
+          {audiences.map((a) => (
+            <li key={a.key} className="bg-warmivory p-7 md:p-9">
+              <h2 className="font-display text-[clamp(1.4rem,2.4vw,2rem)] font-bold leading-[1.05] tracking-[-0.03em]">
+                {a.key}
+              </h2>
+              <p className="mt-4 text-[15px] leading-relaxed text-charcoal/70">{a.body}</p>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 border border-charcoal/30 p-6 md:p-8">
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-charcoal/60">
+            No mail app? Copy the address
+          </p>
+          <p className="font-mono text-[15px] tracking-[0.04em]">{site.contactEmail}</p>
+          <button
+            type="button"
+            onClick={copyEmail}
+            className="ml-auto border border-charcoal px-5 py-3 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors hover:bg-charcoal hover:text-warmivory"
+          >
+            {copied ? 'Copied ✓' : 'Copy email'}
+          </button>
+        </div>
       </Band>
       <ContactRoom />
     </>

@@ -28,9 +28,9 @@ export const hero = {
   eyebrow: 'Arkadhi Labs',
   lines: ['Building the world’s best', 'self-improving AI models', 'for the edge.'],
   headline: 'Building the world’s best self-improving AI models for the edge.',
-  support: 'A research-first AI lab working toward intelligence that improves with experience.',
+  support: 'A research-first AI lab working toward intelligence that improves with experience. Current work: continual-learning experiments and an in-development memory layer for LLM applications.',
   primary: { label: 'Explore our research', to: '/research' },
-  secondary: { label: 'Explore EchoRegent', to: '/echoregent' },
+  secondary: { label: 'Discuss a research collaboration', to: '/contact' },
   pillars: ['Learn', 'Understand', 'Act', 'Aware'],
 };
 
@@ -73,12 +73,55 @@ export const research = {
     label: 'Research preprint | July 2026',
     body: 'CMP explores a different way for AI models to learn from new information.',
     finding:
-      'In controlled language-learning tests, CMP preserved earlier learning better than the comparison model used in the study.',
+      'In controlled language-learning tests, CMP preserved earlier learning better than the evaluated Transformer baseline.',
     limit: 'The study also reports weaker accuracy on a single task and no improvement in a vision test.',
     scope: 'These results do not establish general model superiority or readiness for everyday devices.',
     cta: { label: 'Read the CMP preprint', href: 'https://arxiv.org/abs/2607.26523' },
   },
 };
+
+/**
+ * Compact evidence panel for the Research page. Every fact below is taken
+ * from the inspected preprint record (arXiv:2607.26523, submitted 29 July
+ * 2026); nothing here estimates unpublished numbers. CMP is expanded once
+ * as Cognitive Memory Primitive.
+ */
+export const evidence = {
+  heading: 'What the preprint actually shows.',
+  paper: 'The Art of Not Forgetting: A Local Learning Architecture for Continual Learning',
+  byline: 'Ashmith Atmuri and Yashaswini Rao Bhogarajula · preprint, submitted 29 July 2026',
+  href: 'https://arxiv.org/abs/2607.26523',
+  rows: [
+    { key: 'Mechanism', body: 'Cognitive Memory Primitive (CMP): local learning rules that update without a global backpropagation pass.' },
+    { key: 'Setting', body: 'Controlled language-learning tests of continual learning.' },
+    { key: 'Baseline', body: 'The evaluated Transformer baseline used in the study.' },
+    { key: 'Result', body: 'Lower forgetting (backward transfer) than the baseline; weaker single-task accuracy alongside it.' },
+    { key: 'Limit', body: 'A single-domain accuracy gap and a null result in a vision test, reported in the same study.' },
+    { key: 'Scope', body: 'Preliminary evidence from one study — not general model superiority and not device readiness.' },
+    { key: 'Edge deployment', body: 'Edge deployment evaluation planned. No device runtime, latency, energy or update-cost numbers are claimed.' },
+  ],
+};
+
+/**
+ * Research and collaboration areas with per-area status. Current work and
+ * future ambition stay distinct; nothing here implies a tested
+ * implementation where none exists.
+ */
+export const modalities = [
+  { key: 'Audio and language', body: 'Speech, language and continual-learning experiments under task-specific constraints.', status: 'Exploratory collaboration' },
+  { key: 'Manufacturing and forecasting', body: 'Bounded data-driven modelling problems with a partner and an agreed evaluation.', status: 'Exploratory collaboration' },
+  { key: 'Vision and robotics', body: 'Future research and collaboration areas — not validated current offerings.', status: 'Future direction' },
+] as const;
+
+/**
+ * Who each conversation is for — shown on the Contact page so design
+ * partners, edge-model teams and investors each see their next step.
+ */
+export const audiences = [
+  { key: 'Design partners', body: 'Bring a bounded problem, representative data and deployment constraints; jointly define an experiment and success criteria.' },
+  { key: 'Custom edge-model teams', body: 'Discuss task, device, latency and memory limits, privacy needs and an evaluation plan. Production readiness is not implied.' },
+  { key: 'AI research investors', body: 'Contact the founders for the research direction, evidence, limitations and next experiments. No traction or funding claim is made.' },
+] as const;
 
 export const how = {
   heading: 'How we work',

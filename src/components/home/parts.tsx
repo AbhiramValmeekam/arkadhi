@@ -49,7 +49,7 @@ export function Title({
   className?: string;
 }) {
   const sz = {
-    xl: 'text-[clamp(3rem,10vw,9rem)] leading-[0.9] tracking-[-0.04em]',
+    xl: 'text-[clamp(2.6rem,10vw,9rem)] leading-[0.9] tracking-[-0.04em]',
     lg: 'text-[clamp(2.2rem,6vw,5rem)] leading-[0.95] tracking-[-0.03em]',
     md: 'text-[clamp(1.8rem,4vw,3.2rem)] leading-[1] tracking-[-0.03em]',
   }[size];

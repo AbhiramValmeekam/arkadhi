@@ -27,7 +27,7 @@ export function ContactRoom() {
           <MaskLines
             lines={['START A', 'CONVERSATION.']}
             className="mt-10 md:mt-14"
-            lineClassName="font-display text-[clamp(3rem,11vw,10rem)] font-bold leading-[0.88] tracking-[-0.04em]"
+            lineClassName="font-display text-[clamp(2.5rem,11vw,10rem)] font-bold leading-[0.88] tracking-[-0.04em]"
           />
           <Reveal>
             <p className="mt-10 max-w-[56ch] text-[clamp(1.1rem,1.6vw,1.35rem)] leading-relaxed text-warmivory/90">{closing.body}</p>

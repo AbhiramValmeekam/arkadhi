@@ -106,13 +106,22 @@ function RoutedContent() {
       <AnimatePresence mode="wait">
         <motion.main
           id="main"
+          tabIndex={-1}
           key={location.pathname}
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.42, ease: EASE.calm }}
         >
-          <Suspense fallback={<div className="min-h-[100svh]" aria-busy="true" />}>
+          <Suspense
+            fallback={
+              <div className="flex min-h-[100svh] items-center justify-center" role="status" aria-busy="true">
+                <p className="font-mono text-[12px] uppercase tracking-[0.24em] text-charcoal/60">
+                  Loading section…
+                </p>
+              </div>
+            }
+          >
             <Routes location={location}>
               <Route path="/" element={<Home />} />
 

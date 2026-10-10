@@ -10,8 +10,8 @@ export function About() {
     <>
       <PageHead eyebrow="About" lines={['ABOUT', 'ARKADHI LABS']} intro={mission.edge} />
       <Mission />
-      <Team />
-      <WorkWithUs />
+      <Team index="03" />
+      <WorkWithUs index="04" />
     </>
   );
 }

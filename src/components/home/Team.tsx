@@ -3,9 +3,9 @@ import { Reveal } from '@/components/motion/Reveal';
 import { team } from '@/lib/content/pack';
 
 /** Text-only until approved founder photos exist. */
-export function Team() {
+export function Team({ index = '11' }: { index?: string }) {
   return (
-    <Band id="team" tone="gray" index="11" label="About">
+    <Band id="team" tone="gray" index={index} label="About">
       <Title lines={['THE PEOPLE', 'BUILDING ARKADHI']} />
       <p className="sr-only">{team.heading}</p>
       <ul className="mt-14 grid gap-4 md:mt-20 md:grid-cols-2">

@@ -61,6 +61,9 @@ export function CCHome() {
           />
           <p className="mt-10 max-w-[56ch] text-[clamp(1.1rem,1.6vw,1.35rem)] leading-relaxed text-warmivory/90">{c.invite.body}</p>
           <a href={mail(SUBJECTS.community)} className={`${ON_DARK} mt-10`}>{c.invite.cta} <span aria-hidden="true">→</span></a>
+          <p className="mt-6 max-w-[52ch] font-mono text-[12px] uppercase leading-relaxed tracking-[0.14em] text-warmivory/60">
+            Request to join — include what you are curious about and how you would like to take part.
+          </p>
           <p className="mt-14 border-t border-warmivory/20 pt-5 font-mono text-[12px] uppercase tracking-[0.18em] text-warmivory/75">{c.footer}</p>
         </div>
       </section>

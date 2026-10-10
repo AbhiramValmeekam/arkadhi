@@ -3,10 +3,10 @@ import { Reveal } from '@/components/motion/Reveal';
 import { researchPage } from '@/lib/content/pack';
 
 /** Research catalog — plain status labels, no results. */
-export function ResearchCatalog() {
+export function ResearchCatalog({ index = '02' }: { index?: string }) {
   const c = researchPage.catalog;
   return (
-    <Band id="catalog" index="02" label={c.heading}>
+    <Band id="catalog" index={index} label={c.heading}>
       <Title lines={['RESEARCH', 'CATALOG']} />
       <p className="sr-only">{c.heading}</p>
       <Lead className="mt-10">{c.intro}</Lead>

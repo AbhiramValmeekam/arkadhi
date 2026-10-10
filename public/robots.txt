@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://arkadhi.vercel.app/sitemap.xml

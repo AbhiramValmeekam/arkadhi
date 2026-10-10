@@ -2,10 +2,10 @@ import { Band, Title, Lead, Ledger, PRIMARY } from './parts';
 import { researchPage, mail, SUBJECTS } from '@/lib/content/pack';
 
 /** How to read our results, then an open invitation — email only. */
-export function ResearchReading() {
+export function ResearchReading({ index = '05' }: { index?: string }) {
   const r = researchPage.reading;
   return (
-    <Band id="reading" tone="teal" index="05" label={r.heading}>
+    <Band id="reading" tone="teal" index={index} label={r.heading}>
       <Title lines={['HOW TO READ', 'OUR RESULTS']} />
       <p className="sr-only">{r.heading}</p>
       <Lead className="mt-10">{r.intro}</Lead>

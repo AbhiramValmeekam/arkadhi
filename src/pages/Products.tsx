@@ -7,7 +7,7 @@ export function Products() {
   return (
     <>
       <PageHead eyebrow="Products" lines={['PRODUCTS']} intro={echoHome.label} />
-      <EchoRegentSection />
+      <EchoRegentSection index="01" />
     </>
   );
 }

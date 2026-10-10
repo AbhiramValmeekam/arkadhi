@@ -54,7 +54,7 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
             <button
               type="button"
               onClick={onClose}
-              className="font-mono text-meta uppercase tracking-[0.14em] text-warmivory/80"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-mono text-meta uppercase tracking-[0.14em] text-warmivory/80"
               aria-label="Close navigation"
             >
               Close ✕

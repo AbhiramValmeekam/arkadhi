@@ -49,7 +49,7 @@ export function LabNav() {
         className="fixed inset-x-0 top-0 z-[90] mix-blend-difference"
       >
         <div className="shell flex items-center justify-between py-4 text-[#FFFFFF] md:py-5">
-          <Link to="/" aria-label="Arkadhi Labs home" className="flex items-center gap-3">
+          <Link to="/" aria-label="Arkadhi Labs home" className="flex min-h-[44px] min-w-[44px] items-center gap-3">
             <Logo showWord={false} tone="paper" />
             <span className="font-mono text-[11px] uppercase tracking-[0.28em]">
               Arkadhi Labs
@@ -75,7 +75,7 @@ export function LabNav() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? 'Close menu' : 'Open menu'}
-            className="font-mono text-[11px] uppercase tracking-[0.24em] lg:hidden"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-mono text-[11px] uppercase tracking-[0.24em] lg:hidden"
           >
             {open ? 'Close' : 'Menu'}
           </button>

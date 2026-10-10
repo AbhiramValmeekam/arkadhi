@@ -184,6 +184,9 @@
   .line-mask > span {
     display: block;
     will-change: transform;
+    /* Narrow viewports must wrap, never clip: balance keeps breaks clean. */
+    text-wrap: balance;
+    overflow-wrap: break-word;
   }
 
   /* ── Lab identity: fine drafting grid on ivory ── */

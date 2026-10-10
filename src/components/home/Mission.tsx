@@ -5,24 +5,30 @@ import { SectionHead } from '@/components/lab/motion';
 import { mission, framework } from '@/lib/content/pack';
 
 gsap.registerPlugin(ScrollTrigger);
-
 const prefersReduced = () =>
-  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const narrowViewport = () =>
+  typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches;
 
 /** Words → characters, each word masked so characters can climb out of it. */
 function Chars({ text }: { text: string }) {
   return (
     <>
-      {text.split(' ').map((w, i, a) => (
-        <span key={i}>
-          <span className="inline-block overflow-hidden pb-[0.14em] align-bottom -mb-[0.14em]">
-            {w.split('').map((c, j) => (
-              <span key={j} data-c className="inline-block will-change-transform">{c}</span>
-            ))}
+      {/* One coherent reading equivalent; the animated glyphs below are hidden from it. */}
+      <span className="sr-only">{text}</span>
+      <span aria-hidden="true">
+        {text.split(' ').map((w, i, a) => (
+          <span key={i}>
+            <span className="inline-block overflow-hidden pb-[0.14em] align-bottom -mb-[0.14em]">
+              {w.split('').map((c, j) => (
+                <span key={j} data-c className="inline-block will-change-transform">{c}</span>
+              ))}
+            </span>
+            {i < a.length - 1 ? ' ' : ''}
           </span>
-          {i < a.length - 1 ? ' ' : ''}
-        </span>
-      ))}
+        ))}
+      </span>
     </>
   );
 }
@@ -46,7 +52,9 @@ const VISION_CLS =
  * With prefers-reduced-motion the same text is shown as two plain stacked blocks.
  */
 export function Mission() {
-  const [animated] = useState(() => !prefersReduced());
+  // Static stacked reading path: reduced motion OR narrow viewports, where a
+  // 360% pinned sequence would trap scrolling. Same copy, same identity.
+  const [animated] = useState(() => !prefersReduced() && !narrowViewport());
   const root = useRef<HTMLElement | null>(null);
 
   useLayoutEffect(() => {

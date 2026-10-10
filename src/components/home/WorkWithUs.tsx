@@ -1,9 +1,9 @@
 import { Band, Title, Ledger, PRIMARY } from './parts';
 import { mail, SUBJECTS, work } from '@/lib/content/pack';
 
-export function WorkWithUs() {
+export function WorkWithUs({ index = '10' }: { index?: string }) {
   return (
-    <Band id="work" index="10" label="Work with us">
+    <Band id="work" index={index} label="Work with us">
       <Title lines={['WORK ON QUESTIONS', 'THAT MATTER.']} />
       <p className="sr-only">{work.heading}</p>
       <div className="mt-14 md:mt-20">

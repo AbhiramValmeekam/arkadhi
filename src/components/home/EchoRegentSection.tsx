@@ -4,9 +4,9 @@ import { MaskLines } from '@/components/lab/motion';
 import { Reveal } from '@/components/motion/Reveal';
 import { echoHome, mail, SUBJECTS } from '@/lib/content/pack';
 
-export function EchoRegentSection() {
+export function EchoRegentSection({ index = '08' }: { index?: string }) {
   return (
-    <Band id="echoregent" index="08" label={echoHome.label}>
+    <Band id="echoregent" index={index} label={echoHome.label}>
       <h2 className="sr-only">{echoHome.heading}</h2>
       <MaskLines
         lines={['ECHOREGENT']}

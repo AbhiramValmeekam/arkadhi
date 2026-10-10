@@ -21,7 +21,7 @@ export const heroScene = {
   lines: ['Where intelligence', 'takes shape.'],
   lede: 'A research-first AI lab building original model architecture, local gradient-free learning rules, and evaluation infrastructure with the rigor of a frontier paper.',
   primary: { label: 'Read the flagship paper', to: '/research#arkadhi-cl-2026-01' },
-  secondary: { label: 'View systems & tools', to: '/products' },
+  secondary: { label: 'Discuss a research collaboration', to: '/contact' },
   scrollHint: 'Scroll',
 };
 
